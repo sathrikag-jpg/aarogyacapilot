@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthCopilot - Your Health, Our AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{display:flex;background:#f8fafc;height:100vh;overflow:hidden}
+.sidebar{width:260px;background:#f1f5ff;border-right:1px solid #e2e8f0;padding:20px 14px;display:flex;flex-direction:column;justify-content:space-between}
+.logo{display:flex;gap:10px;align-items:center;font-weight:700;color:#1e293b;margin-bottom:30px}
+.menu div{padding:12px 14px;border-radius:10px;margin:4px 0;color:#64748b;cursor:pointer;display:flex;gap:10px;font-size:14px;font-weight:500}
+.menu div.active{background:#dbeafe;color:#2563eb}
+.main{flex:1;overflow:auto;padding:28px 32px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px}
+.card{background:white;border-radius:18px;padding:18px;border:1px solid #eef2ff;box-shadow:0 2px 10px rgba(0,0,0,0.03)}
+.card b{font-size:24px;display:block;margin-top:6px}
+.progress{height:6px;background:#e2e8f0;border-radius:10px;margin-top:10px;overflow:hidden}
+.progress div{height:100%;border-radius:10px}
+.grid2{display:grid;grid-template-columns:1.2fr 0.8fr;gap:18px}
+.overview{background:white;border-radius:18px;padding:20px;border:1px solid #eef2ff}
+.circle{width:110px;height:110px;border-radius:50%;border:8px solid #e2e8f0;border-top-color:#3b82f6;border-right-color:#10b981;display:grid;place-items:center;font-weight:700;font-size:20px}
+.page{display:none} .page.active{display:block}
+.record{display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid #f1f5f9;border-radius:14px;margin:10px 0;background:white}
+.btn{padding:8px 18px;border-radius:20px;border:1px solid #bfdbfe;color:#2563eb;background:white;cursor:pointer;font-weight:600}
+.chat{background:#f8fafc;border-radius:16px;padding:16px;margin:12px 0}
+.chat.me{background:#3b82f6;color:white;margin-left:40px;border-radius:18px 18px 4px 18px}
+.chat.ai{background:#f1f0ff;margin-right:40px}
+@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}body{flex-direction:column}.sidebar{width:100%}}
+</style>
+</head>
+<body>
+<div class="sidebar">
+<div>
+<div class="logo">💙 HealthCopilot<br><small style="font-weight:400;font-size:11px;color:#64748b">Your Health, Our AI</small></div>
+<div class="menu">
+<div class="active" onclick="show('dashboard',this)">🏠 Dashboard</div>
+<div onclick="show('analytics',this)">📊 Health Analytics</div>
+<div onclick="show('ai',this)">🤖 AI Assistant</div>
+<div onclick="show('records',this)">📄 Medical Records</div>
+<div onclick="show('presc',this)">💊 Prescriptions</div>
+<div onclick="show('goals',this)">🎯 Wellness & Goals</div>
+<div>👤 Profile</div>
+</div>
+</div>
+<div style="padding:10px;color:#64748b">⏻ Logout</div>
+</div>
+
+<div class="main">
+<!-- DASHBOARD -->
+<div id="dashboard" class="page active">
+<div class="top"><div><h2>☀️ Good Morning, Supriya</h2><p style="color:#64748b;font-size:14px">Take small steps today for a healthier tomorrow.</p></div><div style="display:flex;gap:12px;align-items:center"><span>🔔</span><b style="background:#3b82f6;color:white;width:32px;height:32px;display:grid;place-items:center;border-radius:50%">S</b> Supriya ▼</div></div>
+<div class="cards">
+<div class="card">❤️ Heart Rate<b>72 bpm</b><small style="color:#10b981">● Normal</small><div class="progress"><div style="width:70%;background:#ef4444"></div></div></div>
+<div class="card">💧 Steps<b>6,842</b><small style="color:#64748b">Goal: 10,000</small><div class="progress"><div style="width:68%;background:#3b82f6"></div></div></div>
+<div class="card">🌙 Sleep<b>7h 20m</b><small style="color:#10b981">● Good</small><div class="progress"><div style="width:80%;background:#3b82f6"></div></div></div>
+<div class="card">🔥 Calories<b>1,240°</b><small style="color:#64748b">Goal: 2,000</small><div class="progress"><div style="width:62%;background:#f59e0b"></div></div></div>
+</div>
+<div class="grid2">
+<div class="overview"><h3>Health Overview</h3><div style="display:flex;gap:30px;margin-top:16px;align-items:center"><div class="circle">78%</div><div style="font-size:13px;line-height:2"><span>🔴 Heart Health 82%</span><br><span>🔵 Sleep Quality 76%</span><br><span>🟢 Nutrition 70%</span><br><span>🟡 Activity 78%</span><br><span>🔴 Stress Level 68%</span></div></div></div>
+<div class="overview"><h3>AI Health Assistant</h3><div style="text-align:center;padding:20px"><div style="font-size:40px">🤖</div><b>Hi Supriya! 👋</b><p style="font-size:13px;color:#64748b">I'm your AI Health Copilot. Ask me anything about your health, symptoms, or get personalized advice.</p><input placeholder="Type your health question..." style="width:100%;margin-top:12px;padding:10px 14px;border-radius:20px;border:1px solid #e2e8f0"></div></div>
+</div>
+</div>
+
+<!-- ANALYTICS -->
+<div id="analytics" class="page">
+<h2>Health Analytics</h2><p style="color:#64748b">Track your progress and make better decisions.</p>
+<div class="cards" style="margin-top:20px">
+<div class="card"><b>❤️ Heart Rate</b><small>Avg: 72 bpm</small><div style="margin-top:20px;height:60px;background:linear-gradient(to top,#dbeafe 20%,transparent);border-bottom:2px solid #3b82f6">📈 60-90 bpm Mon-Sun</div></div>
+<div class="card"><b>💙 Steps</b><small>Avg: 6,842 steps</small><div style="margin-top:10px;display:flex;gap:6px;align-items:end;height:60px"><div style="height:40px;width:18px;background:#bfdbfe;border-radius:4px"></div><div style="height:55px;width:18px;background:#60a5fa;border-radius:4px"></div><div style="height:35px;width:18px;background:#bfdbfe;border-radius:4px"></div><div style="height:65px;width:18px;background:#60a5fa;border-radius:4px"></div></div></div>
+<div class="card"><b>💜 Sleep</b><small>Avg: 7h 20m</small><div style="margin-top:10px;display:flex;gap:6px;align-items:end;height:60px"><div style="height:45px;width:14px;background:#c4b5fd;border-radius:4px"></div><div style="height:35px;width:14px;background:#a78bfa;border-radius:4px"></div><div style="height:60px;width:14px;background:#8b5cf6;border-radius:4px"></div></div></div>
+<div class="card"><b>💛 Calories</b><small>Avg: 1,240 kcal</small><div style="margin-top:10px;display:flex;gap:6px;align-items:end;height:60px"><div style="height:40px;width:14px;background:#fde68a;border-radius:4px"></div><div style="height:60px;width:14px;background:#f59e0b;border-radius:4px"></div><div style="height:35px;width:14px;background:#fde68a;border-radius:4px"></div></div></div>
+</div>
+</div>
+
+<!-- AI -->
+<div id="ai" class="page">
+<h2>AI Health Assistant</h2><p style="color:#64748b">Ask me anything about your health. I'm here to help!</p>
+<div style="background:white;border-radius:18px;padding:20px;margin-top:20px;border:1px solid #eef2ff">
+<div class="chat me">I've been feeling tired and have mild headache. What could be the reason?</div>
+<div class="chat ai">It could be due to several reasons such as:<br>• Lack of sleep<br>• Dehydration<br>• Stress<br>• Low iron levels<br><br>I recommend:<br>1. Drink enough water<br>2. Get 7-8 hours of sleep<br>3. Eat iron-rich foods (greens, nuts, etc.)<br>4. If symptoms persist, consult a doctor.<br><br>Would you like me to suggest a diet plan or book an appointment?</div>
+<div style="display:flex;gap:8px;margin-top:12px"><button class="btn">Suggest Diet Plan</button><button class="btn">Book Appointment</button><button class="btn">Track Symptoms</button></div>
+</div>
+</div>
+
+<!-- RECORDS -->
+<div id="records" class="page">
+<h2>Medical Records</h2><p style="color:#64748b">View and manage your health records.</p>
+<div style="margin:16px 0;display:flex;gap:8px"><button class="btn" style="background:#2563eb;color:white">All</button><button class="btn">Lab Reports</button><button class="btn">Doctor Notes</button><button class="btn">Vaccination</button></div>
+<div class="record"><div>🩸 <b>Blood Test Report</b><br><small style="color:#64748b">Hemoglobin, CBC, etc.</small></div><div><small>12 Mar 2025</small> <button class="btn">View</button></div></div>
+<div class="record"><div>🩻 <b>X-Ray Report</b><br><small>Chest X-Ray</small></div><div><small>05 Jan 2025</small> <button class="btn">View</button></div></div>
+<div class="record"><div>📝 <b>Doctor Consultation Note</b><br><small>General Physician</small></div><div><small>20 Dec 2024</small> <button class="btn">View</button></div></div>
+<div class="record"><div>💉 <b>Vaccination Record</b><br><small>COVID-19 Booster</small></div><div><small>10 Nov 2024</small> <button class="btn">View</button></div></div>
+</div>
+
+<!-- PRESCRIPTIONS -->
+<div id="presc" class="page">
+<h2>Prescriptions</h2><p style="color:#64748b">Your medicines and treatment plans.</p>
+<div style="margin:16px 0"><button class="btn" style="background:#2563eb;color:white">Current</button><button class="btn">Past</button></div>
+<div class="record"><div>💊 <b>Paracetamol 500mg</b><br><small>1 tablet - Twice a day</small></div><div><small style="background:#dcfce7;padding:4px 8px;border-radius:10px">12 Days Left</small></div></div>
+<div class="record"><div>💊 <b>Vitamin D3 60K</b><br><small>1 capsule - Once a week</small></div><div><small style="background:#dcfce7;padding:4px 8px;border-radius:10px">5 Weeks Left</small></div></div>
+<div class="record"><div>💊 <b>Multivitamin</b><br><small>1 tablet - Once a day</small></div><div><small style="background:#dcfce7;padding:4px 8px;border-radius:10px">23 Days Left</small></div></div>
+<center><button class="btn" style="margin-top:20px">+ Upload Prescription</button></center>
+</div>
+
+<!-- GOALS -->
+<div id="goals" class="page">
+<h2>Wellness & Goals</h2><p style="color:#64748b">Build healthy habits and achieve your goals.</p>
+<div class="cards" style="margin-top:20px">
+<div class="card">⚖️ <b>Weight Goal</b><br><small>Current: 58 kg Target: 55 kg</small><div class="progress"><div style="width:60%;background:#3b82f6"></div></div></div>
+<div class="card">💧 <b>Water Intake</b><br><small>1.2L / 1.2L</small><div class="progress"><div style="width:90%;background:#0ea5e9"></div></div></div>
+<div class="card">🏃 <b>Exercise</b><br><small>3 days this week Target: 5 days</small><div class="progress"><div style="width:60%;background:#10b981"></div></div></div>
+<div class="card">🧘 <b>Stress Management</b><br><small>Take a 5 min break 3 / 7 days</small><div class="progress"><div style="width:42%;background:#8b5cf6"></div></div></div>
+</div>
+</div>
+
+</div>
+<script>
+function show(id,el){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('.menu div').forEach(m=>m.classList.remove('active'));
+el.classList.add('active');
+}
+</script>
+</body>
+</html>
